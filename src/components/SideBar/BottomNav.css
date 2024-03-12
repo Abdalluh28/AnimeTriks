@@ -1,0 +1,22 @@
+.link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 25px;
+    margin-top: 5px;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+.link>* {
+    padding: 5px;
+}
+.link:hover{
+    transform: scale(0.9);
+}
+
+.fixed-bottom {
+    border-top: 0.5px solid rgba(255, 255, 255, 0.285);
+    background-color: rgb( 0 0 0 / 85%);
+    z-index: 100;
+}

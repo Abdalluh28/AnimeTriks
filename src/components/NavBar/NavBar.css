@@ -1,0 +1,32 @@
+.navbar {
+    background-color: black !important;
+}
+.main-logo{
+    color: white;
+    font-size: 35px;
+}
+
+.navbar-toggler{
+    color: white !important;
+}
+.form{
+    justify-content: center;
+    align-items: center;
+}
+.form i{
+    color: white;
+    font-size: 25px;
+}
+
+.form button{
+    font-size: 20px;
+    padding: 5px 25px;
+    background-color: white;
+    color: black;
+    transition: all 0.3s;
+}
+.form button:hover{
+    color: white;
+    background-color: black;
+    border: 1px solid white;
+}

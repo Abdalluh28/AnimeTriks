@@ -1,0 +1,93 @@
+
+background color for bottom navbar
+
+streaming-links
+
+rating
+
+
+
+import { useState } from "react";
+import { useEffect } from "react";
+import './Slider.css'
+
+export function Slider() {
+
+    let [animes, setAnimes] = useState([])
+    let [firstAnime, setFirstAnime] = useState("")
+
+    useEffect( () => {
+        fetch("https://api.jikan.moe/v4/top/anime").then ( (res) => {
+            return res.json()
+        }).then( (data) => {
+            data.data.length -= 15
+            setAnimes(data.data);
+            console.log(data.data)
+            setFirstAnime([data.data[9].images.jpg.image_url,data.data[9].title_english,data.data[9].title,data.data[9].synopsis.slice(0,140)])
+        } )
+    } , [])
+
+    let counter = 0
+    let anime = animes.map( (item) => {
+        counter++;
+        if(counter === 10)
+            return (
+                <></>
+            );
+        return (
+            <div className="carousel-item" key={item.mal_id}>
+                <div className="row h-100">
+                    <div className="col-sm-6 h-100">
+                        <img src={item.images.jpg.image_url} className="img"/>
+                    </div>
+                    <div className="col-sm-6 d-flex flex-column justify-content-around">
+                        <p className="title"> {item.title_english} ({item.title}) </p>
+                        <p> {item.synopsis.slice(0,140)}... </p>
+                        <button className="button">Watch Now</button>
+                    </div>
+                </div>
+            </div>
+        )
+    } )
+
+//averageRating
+
+    return (
+        <div id="carouselId" className="carousel slide" data-bs-ride="carousel">
+            <div className="carousel-inner" role="listbox">
+                <div className="carousel-item active" >
+                    <div className="row h-100">
+                        <div className="col-sm-6 h-100">
+                            <img src={firstAnime[0]} className="img" />
+                        </div>
+                        <div className="col-sm-6 d-flex flex-column justify-content-around">
+                            <p className="title"> {firstAnime[1]} ({firstAnime[2]})</p>
+                            <p className=""> {firstAnime[3]}... </p>
+                            <button className="button">Watch Now</button>
+                        </div>
+                    </div>
+                </div>
+                {anime}
+            </div>
+            <button
+                className="carousel-control-prev carousel-buttons"
+                type="button"
+                data-bs-target="#carouselId"
+                data-bs-slide="prev"
+            >
+                <span >Previous</span>
+            </button>
+            <button
+                className="carousel-control-next carousel-buttons"
+                type="button"
+                data-bs-target="#carouselId"
+                data-bs-slide="next"
+            >
+                <span >Next</span>
+            </button>
+        </div>
+        
+    )
+
+}
+
