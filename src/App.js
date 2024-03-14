@@ -23,9 +23,7 @@ function App() {
 
   return (
     <>
-      <NavBar >
-        <Example />
-      </NavBar>
+      <NavBar />
       <div className='container-fluid'>
         <div className='row'>
           <div className='col-2 sideBar' > <SideBar /> </div> 
