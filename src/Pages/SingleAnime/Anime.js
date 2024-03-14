@@ -212,7 +212,7 @@ export function Anime() {
         }
         else if (item.includes('https://') || item.includes('http://')) {
             start = item.indexOf('://')
-            title = item.substring(start + 3, end)
+            title = item.substring(start + 3, end);
         }
         else {
             title = item.substring(0, item.indexOf('.co'))
