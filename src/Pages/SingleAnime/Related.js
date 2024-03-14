@@ -1,3 +1,6 @@
+/* eslint-disable no-restricted-globals */
+// Your code using location
+
 import { useEffect, useState, useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
 
@@ -100,7 +103,7 @@ export function RelatedAnime(props) {
             return (
                 <div key={item.id} className="card col-lg-3 col-md-4 col-sm-6" >
                     <span onClick={() => {
-                        location.href = `/anime/${item.id}${type === 'manga'? '/manga':''}`
+                        location.href = `/#/anime/${item.id}${type === 'manga'? '/manga':''}`
                     }}>
                         <div>
                             <img src={item.attributes.posterImage.original} alt={item.attributes.canonicalTitle} />

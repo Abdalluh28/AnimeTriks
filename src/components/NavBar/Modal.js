@@ -1,3 +1,6 @@
+/* eslint-disable no-restricted-globals */
+// Your code using location
+
 import { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -37,9 +40,9 @@ function Example() {
     }, [searchTerm]);
 
 
-    let newLocatoin = (e,i) => {
+    let newLocatoin = (i) => {
         handleClose();
-        location.href = `/anime/${animes[i].id}`
+        location.href = `/#/anime/${animes[i].id}`
     }
 
     useEffect(() => {
@@ -57,12 +60,12 @@ function Example() {
             for (let i = counter; i < counter + 5 && i < animes.length; i++) {
                 console.log(i)
                 let anyvar = <div key={animes[i].id} className='anime row'>
-                    <div to={`/anime/${animes[i].id}`} onClick={() => {newLocatoin(event,i)}} className='animeImage col-7'>
+                    <div to={`/anime/${animes[i].id}`} onClick={() => {newLocatoin(i)}} className='animeImage col-7'>
                         <img src={animes[i].attributes.posterImage.original} />
                     </div>
                     <div className='animeText col-5'>
-                        <div to={`/anime/${animes[i].id}`}  onClick={() => {newLocatoin(event,i)}}>{animes[i].attributes.canonicalTitle}</div>
-                        <div><div className='btn btn-primary' onClick={() => {newLocatoin(event,i)}} >View</div></div>
+                        <div to={`/anime/${animes[i].id}`}  onClick={() => {newLocatoin(i)}}>{animes[i].attributes.canonicalTitle}</div>
+                        <div><div className='btn btn-primary' onClick={() => {newLocatoin(i)}} >View</div></div>
                     </div>
                 </div>
                 newAnimes = [...newAnimes, anyvar]
