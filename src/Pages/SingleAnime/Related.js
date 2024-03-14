@@ -80,9 +80,6 @@ export function RelatedAnime(props) {
     }, [category, id]);
 
 
-    function refreshPage() {
-        window.location.reload(false);
-    }
 
     useEffect( () => {
         let popStateEvent = () => {
@@ -101,15 +98,17 @@ export function RelatedAnime(props) {
             if (item.attributes.canonicalTitle === originalName)
                 return null;
             return (
-                <div key={item.id} className="card col-lg-3 col-md-4 col-sm-6" onClick={refreshPage}>
-                    <Link to={`/anime/${item.id}${type === 'manga'? '/manga':''}`}>
+                <div key={item.id} className="card col-lg-3 col-md-4 col-sm-6" >
+                    <span onClick={() => {
+                        location.href = `/anime/${item.id}${type === 'manga'? '/manga':''}`
+                    }}>
                         <div>
                             <img src={item.attributes.posterImage.original} alt={item.attributes.canonicalTitle} />
                         </div>
                         <p>{item.attributes.canonicalTitle}</p>
                         {type === 'anime' ? <p className='episode'>Ep: {item.attributes.episodeCount ? item.attributes.episodeCount : 1}</p>
                             : null}
-                    </Link>
+                    </span>
                 </div>
             )
         });
